@@ -105,10 +105,14 @@ class App extends Component {
             <Switch>
 
               {!isLoggedIn && !isLoading && (
-                <StyledFirebaseAuth
-                  uiConfig={firebase.uiConfig}
-                  firebaseAuth={firebase.auth()}
-                />
+                <div id='firebase-auth'>
+                  <h1>Welcome!</h1>
+                  <h3>Sign in to begin.</h3>
+                  <StyledFirebaseAuth
+                    uiConfig={firebase.uiConfig}
+                    firebaseAuth={firebase.auth()}
+                    />
+                </div>
               )}
 
               {isLoggedIn && !isLoading && (
