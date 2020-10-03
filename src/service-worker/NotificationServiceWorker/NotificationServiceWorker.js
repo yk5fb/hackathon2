@@ -27,9 +27,9 @@ self.addEventListener('push', function(event) {
   console.log('[Service Worker] Push Received.');
   console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
 
-  const title = 'Push Codelab';
+  const title = 'Welcome to Helpers Web AR';
   const options = {
-    body: 'Yay it works.',
+    body: 'Kindly find people that need help around you :)',
     icon: 'images/ARModeButton.png',
     badge: 'images/ARModeButton.png'
   };

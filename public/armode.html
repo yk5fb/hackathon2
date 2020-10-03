@@ -1,27 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>GeoAR.js demo</title>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src='dist/aframe.min.js'></script>
+    <script src='dist/aframe-ar.js'></script>
+    <!--<script src="dist/face-api.js"></script>-->
+    <script src="scripts/fundamental/commons.js"></script>
+    <!--<script src="scripts/fundamental/faceDetectionControls.js"></script>-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script>
+    THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/data/data/camera_para.dat'
+    </script>
 </head>
 
-<body style="margin: 0; overflow: hidden;">
+<link rel="stylesheet" href="./src/location-based/stylesheets/index.css">
+
+ <!--Dynamically add places from Javascript -->
+<script src="scripts/placesToClick.js"></script>
+<script src="scripts/placesLabel.js"></script>
+
+<body style='margin: 0; overflow: hidden;'>
+
+<!--<a-scene embedded  arjs="cameraParametersUrl:-->
+<!--./node_modules/ar.js/data/data/camera_para.dat;" >-->
+<!--...-->
+<!--</a-scene>-->
+
 <a-scene
+        cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;'
+        raycaster="objects: [gps-entity-place];"
         vr-mode-ui="enabled: false"
         embedded
-        arjs="sourceType: webcam; debugUIEnabled: false;"
->
-    <a-text
-            value="This content will always face you."
-            look-at="[gps-camera]"
-            scale="120 120 120"
-            gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"
-    ></a-text>
-    <a-camera gps-camera rotation-reader> </a-camera>
+        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+    <a-camera gps-camera="minDistance: 40;" rotation-reader></a-camera>
 </a-scene>
+
+
+<!--<canvas id="overlay">-->
+<!--<img id="detectedImage" src="src/images/img.jpg">-->
+<!--</canvas>-->
+
+<!--AI-->
+<!--<div style="position: relative" class="margin">-->
+<!--&lt;!&ndash;<video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>&ndash;&gt;-->
+<!--<img id="detectedImage" src="src/images/img.jpg">-->
+<!--<canvas id="overlay" />-->
+<!--</div>-->
+
+<!--<script src="scripts/loadModel.js"></script>-->
 </body>
 </html>

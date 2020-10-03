@@ -53,15 +53,15 @@ const showNotification = async (title, options) => {
 
 const register = async () => {
   const currentServiceWorker = await navigator.serviceWorker.register('service-worker.js');
-  console.log('Service Worker is registered', serviceWorker);
   serviceWorker = currentServiceWorker;
 
-  const title = 'Push Codelab';
+  const title = 'Welcome to Helpers Web AR';
   const options = {
-    body: 'aYay it works.',
-    icon: 'images/icon.png',
-    badge: 'images/badge.png'
+    body: 'Kindly find people that need help around you :)',
+    icon: 'images/ARModeButton.png',
+    badge: 'images/ARModeButton.png'
   };
+
   await showNotification(title, options);
 };
 

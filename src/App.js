@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import * as firebase from "./services/Firebase"
-import {Loading, Dashboard, Notification} from "./containers";
-import {TopNavbar, Background, BottomNavbar, NotFound} from "./components";
-import {withRouter} from "react-router-dom"
+import {Dashboard, Loading, Notification} from "./containers";
+import {Background, BottomNavbar, NotFound, TopNavbar} from "./components";
 import {Breakpoint} from "react-socks";
-import ARMode from "./containers/ARMode/ARMode";
+import ARModeButtonImage from "./components/BottomNavbar/images/ARModeButton.png";
+import {showNotification} from "./service-worker/NotificationServiceWorker";
 
 class App extends Component {
   constructor(props) {
@@ -22,6 +22,13 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
+    const title = "Helpers Web AR";
+    const options = {
+      body: "Hey, there is someone need your help around you! check it now",
+      icon: ARModeButtonImage,
+      badge: ARModeButtonImage
+    };
+    showNotification(title, options);
     await this.checkIsLoggedIn();
   };
 
@@ -91,7 +98,6 @@ class App extends Component {
 
   render() {
     const {isLoading, isLoggedIn, userData} = this.state;
-    console.log(this.state)
     return (
       <div>
 

@@ -55,7 +55,8 @@ class ProfileCard extends Component {
           }
           actions={[
             <MessageOutlined key="setting" onClick={() => this.showCommentsModal()} />,
-            <EnvironmentOutlined key="edit" onClick={() => this.showPositionViewModal()}/>,
+            <EnvironmentOutlined key="edit" onClick={() =>
+              window.location = "https://console.echoar.xyz/geoarjs?key=noisy-recipe-0500&entry=25f1c4d7-91c5-4a65-b527-19dddc189972"}/>,
             <EllipsisOutlined key="ellipsis"  />
           ]}
         >
@@ -66,7 +67,7 @@ class ProfileCard extends Component {
           />
         </Card>
 
-        <Modal 
+        <Modal
           title="Position View"
           visible={this.state.positionViewVisible}
           onOk={this.hidePositionViewModal}
