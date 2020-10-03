@@ -7,6 +7,7 @@ import {Loading, Dashboard, Notification} from "./containers";
 import {TopNavbar, Background, BottomNavbar, NotFound} from "./components";
 import {withRouter} from "react-router-dom"
 import {Breakpoint} from "react-socks";
+import ARMode from "./containers/ARMode/ARMode";
 
 class App extends Component {
   constructor(props) {
@@ -116,7 +117,7 @@ class App extends Component {
                     exact
                     path="/"
                     render={(props) => (
-                      <Dashboard {...props}/>
+                      <Dashboard {...props} userData={userData}/>
                     )}
                   />
 
@@ -124,7 +125,7 @@ class App extends Component {
                     exact
                     path="/notification"
                     render={(props) => (
-                      <Notification {...props}/>
+                      <Notification {...props} userData={userData}/>
                     )}
                   />
                 </>
@@ -138,13 +139,18 @@ class App extends Component {
 
             </Switch>
           </div>
-          <BottomNavbar setPage={this.setPage}/>
+
+          {isLoggedIn && (
+            <BottomNavbar setPage={this.setPage}/>
+          )}
         </Breakpoint>
+
+        {/*//entry ID : https://console.echoAR.xyz/geoarjs?key=<YOUR_API_KEY>&entry=<ENTRY_ID>*/}
+        {/*noisy-recipe-0500*/}
 
         <Breakpoint medium up>
           <h2>Sorry, only available on Mobile Devices</h2>
         </Breakpoint>
-
 
       </div>
     )

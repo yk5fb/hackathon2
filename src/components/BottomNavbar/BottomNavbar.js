@@ -25,6 +25,7 @@ class BottomNavbar extends Component {
 
   render() {
     const {tabName} = this.state;
+    console.log(tabName);
 
     return (
       <div>

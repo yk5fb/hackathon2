@@ -19,8 +19,8 @@ ReactDOM.render(
 
 
 if ('serviceWorker' in navigator && 'PushManager' in window) {
-  // CacheServiceWorker.register();
-  // NotificationServiceWorker.register();
+  CacheServiceWorker.register();
+  NotificationServiceWorker.register();
 } else {
   console.log("Sorry, try to update your chrome");
 }

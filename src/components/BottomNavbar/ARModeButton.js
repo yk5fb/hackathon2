@@ -9,11 +9,12 @@ export const ARModeButton = () => {
       <img alt="ar-mode" src={ARModeButtonImage} className="ar-mode-button" onClick={ async () => {
         const title = "Helpers Web AR";
         const options = {
-          body: "Yay it works.",
+          body: "Hey, there is someone need your help around you! check it now",
           icon: ARModeButtonImage,
           badge: ARModeButtonImage
         };
-        await showNotification(title, options)
+        await showNotification(title, options);
+        window.location = "/armode.html";
       }}/>
     </div>
   )
